@@ -1,0 +1,11 @@
+package com.cg.mtp.ui;
+
+public class App1 {
+
+	public static void main(String[] args) {
+		System.out.println("thread name : " + Thread.currentThread().getName());
+		System.out.println("thread id : " + Thread.currentThread().getId());
+
+	}
+
+}

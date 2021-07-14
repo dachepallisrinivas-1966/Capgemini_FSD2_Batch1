@@ -1,0 +1,393 @@
+Neeraj, Yogita
+
+1. basics of java
+2. oop
+	inheritance, polymorphism
+3. interfaces, abstract classes
+4. arrays
+5. 
+6. java.lang
+	Math
+	Object
+	
+	String
+	StringBuffer
+	StringBuilder
+	System
+	Exception
+
+	Thread
+	Runnable
+	
+   java.util
+	Scanner
+	Date
+7. exception handling
+	try, catch, finally
+	throw, throws
+
+
+
+java.lang.System class:
+
+	class variables			        object
+	-------------------			---------
+	public static InputStream		in
+	public static PrintStream		out
+	public static PrintStream		err
+
+	System.in	carries signal from keyboard to VDU.
+	System.out, System.err carries signal directly to VDU.
+
+
+	methods:
+	------------
+	public static void gc();		request for garbage collection.
+	public static void exit(int)	terminates the program then and there. int could be either a 0 or 1.
+    	String getenv(String varName);
+	String getevc()			to read all environment variables
+
+    	
+	
+
+
+Wrapper Classes                     static method
+    java.lang.Integer               parseInt(string-form-int)
+    java.lang.Short
+    java.lang.Byte
+    java.lang.Double                parseDouble(string-form-double)
+    java.lang.Boolean
+    java.lang.Float
+    java.lang.Character
+    java.lang.Long
+
+					parseXXX(string-form-xxx)
+
+
+"100"		string-form-int
+
+	int a = Integer.parseInt("100")	==>	100	(int)
+To convert a string-form-primitive type to respective primitive type.
+
+	double b = Double.parseDouble("12.5")	
+	System.out.println(b);	// 12.5
+
+
+ Boxing:
+    primitive variable into a wrapper object
+
+    int x = 89;
+    Integer iobj = x;   //auto-boxing
+
+ unBoxing:
+    wrapper object into primitive variable
+ 
+    Integer iobj = new Integer(109);
+    int x = iobj; // auto-unboxing
+
+
+    String s="10";
+    int x = Integer.pareInt(s);
+
+
+example program
+-------------------
+	System.out.println(System.getenv("os"));
+		
+	// < jdk 1.5
+	int a = 100;
+	// Integer obj = Integer.valueOf(a);
+	// System.out.println(obj);
+		
+	// >= jdk 1.5
+	Integer obj2 = a;		// auto-boxing
+	System.out.println(obj2);
+		
+	// auto-unboxing
+	Double b = 123.54;
+	// System.out.println(Double.valueOf(b));
+	System.out.println(b);	// auto-unboxing
+		
+		
+	// operator overloading
+	Double c = b + 3;
+	System.out.println(c);
+
+
+
+
+developer-A
+	Class  Citizen {
+		
+		// constructors, setters , getters
+		boolean isEligibleToVote() {
+		   try {
+			if (getAge() <= 18)
+				throw new InvalidAgeException("Not eligible to vote");
+		   } catch(InvalidAgeException excep) {
+			System.out.println(excep.getMessage());
+		   }
+			
+		}		
+		getAge() {
+
+		}
+
+	}
+
+
+
+	InvalidAgeException extends Exception {
+		public InvalidAgeException(String msg) {
+			super(msg);
+		}		
+	}
+
+developer-B
+	VotingApp {
+		psvm() {
+			Citizen obj = new Citizen(....);
+			if (obj.isEligibleToVote())
+				sysout("your voter id is .." + voterid);
+
+		}
+	}
+
+
+====================================================================================================
+
+developer-A
+	Class  Citizen {
+		
+		// constructors, setters , getters
+		boolean isEligibleToVote() throws InvalidAgeException {
+			if (getAge() <= 18)
+				throw new InvalidAgeException("Not eligible to vote");
+			
+		}		
+		getAge() {
+
+		}
+
+	}
+
+
+	InvalidAgeException extends Exception {
+		public InvalidAgeException(String msg) {
+			super(msg);
+		}		
+	}
+
+developer-B
+	VotingApp {
+		psvm() {
+			Citizen obj = new Citizen(....);
+			try {
+				if (obj.isEligibleToVote())	
+					sysout("your voter id is .." + voterid);
+			} catch(InvalidAgeException excep) {
+				System.out.println(excep.getMessage());
+			}
+		}
+	}
+
+
+two possibilities
+---------------------
+1) developer-A	can handle the exception 
+
+(or)
+
+2) developer-A  can insist to handle the exception by the consumer of the class Citizen.
+
+
+
+Date Time API	(jdk1.8+)
+--------------------------
+(java.time package)
+LocalDate, LocalTime, LocalDateTime
+	static methods:
+	---------------
+	
+	now()
+	of()
+	parse(string-form-date) : ISO Format : yyyy-mm-dd
+
+Period	: to get the gap between two given dates.
+Duration : to get the gap between two given times.
+
+ZonedDateTime
+DateTimeFormatter
+
+Assignment:
+---------------
+accept login and logout times of a participant. display how long the partipant is available in the session.
+eg: 5 hours 40 minutes 10 seconds.
+
+Assigment:
+--------------
+StringJoiner (jdk1.8+)
+write an example program using StringJoiner class.
+
+
+multi threading
+-------------------
+thread : light weight process
+asynchronous execution of different parts of same program
+
+1) java.lang.Thread class
+	public void run() {
+		// code for the thread
+	}
+2) java.lang.Runnable interface
+
+
+Thread life cycle:
+-----------------------
+1) new 
+2) runnable 
+3) run
+4) blocked (idle)
+5) dead 
+
+life cycle methods:
+--------------------
+start()
+run()
+stop()
+sleep(milli-seconds)
+wait(), notify()
+suspend(), resume() => outdated
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+ Regular Expressions
+						           --------------------
+                                    (java.util.regex)
+
+A regular expression defines a search pattern for strings. The short form for regular expression 
+is regex. 
+The search pattern can be anything from a simple character, a fixed string or a complex 
+expression containing special characters describing the pattern. 
+The pattern defined by the regex may match one or several times or not at all for a 
+given string.
+Regular expressions can be used to search, edit and manipulate text.
+It is mainly for validations.
+
+
+	.	any single character
+	\d	single digit from 0 - 9
+	\D	single character except digit
+	\s	space
+	\S	single character except space
+	[ ]	single character of given choice or range
+		eg: 	[A-Z]           any uppercase alphabet
+			    [abcdA-E]       a,b,c,d,A,B,C,D,E
+			    [0-9]           any digit
+	[^ ]	single character except within the range
+		eg:	[^ 1-5]         any digit other than 1,2,3,4,5
+
+occurance indicaters:
+	
+	?	0 to 1 time
+	*	0 to any no. of times
+	+	1 to any no. of times
+	{ n }	exactly 'n' times.
+	{ , m}	max. 'm' times and min. is '0'.
+	{n, m}	min. 'n' times and max. is 'm' times.
+
+eg:
+
+	mobile number	"\d{10}"
+	but in java, we must say "\\d{10}"
+
+	but first digit cannot be 0. so , it must be given as ...	"[1-9]\\d{9}"
+
+	vehicle number	eg: AP31 CK 9916
+				        AP31CK   1
+        [1-9]
+
+		[A-Z]{2} \d{2} [A-Z]{2} \s\d{, 3}
+
+	aadhar id		eg: 8414 6320 8422
+		\d{4} \s \d{4} \s \d{4}
+
+
+java.util.regex package:
+------------------------------
+
+a) Pattern class:		to represent regular expression.
+-----------------------
+	methods:
+	-------------
+	i)	public static 	Pattern 	compile(String   regexPattern)
+			it checks whether any small part of pattern is matching or not.
+	
+b) Matcher class:
+    methods:
+    i) public static   Matcher 	matches(pattern, String)
+			it checks whether the entire string should exactly match the pattern.
+
+split method (of java.lang.String)
+    i) String [] split(String)
+            will extract the String based on the pattern specified.
+
+
+    public class RegExDemo {
+        public static void main(String [] args) {
+            String mobile = "9247175823";
+            String mobile2 = "92471";
+
+            // System.out.println(mobile.matches("[1-9][0-9]{9}"));
+            // System.out.println(mobile.matches("[1-9][0-9]{9}"));
+
+            Pattern mobP = Pattern.compile("[1-9][0-9]{9}");
+            Matcher m1 = mobP.matcher(mobile);
+            System.out.println(m1.matches());
+
+            String passage = "I have to port 9247212540 into a new 9247212539";
+            Matcher m2 = mobP.matcher(passage);
+            System.out.println(m2.find());
+        }
+    }
+
+
+
+===============================================================================================
+Wrapper classes
+reg ex
+multi threading
+collections
+io streams
+
+
+

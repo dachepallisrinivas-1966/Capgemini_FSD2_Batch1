@@ -1,0 +1,10 @@
+package com.cg.mtp.ui;
+
+public class App1 {
+
+	public static void main(String[] args) {
+		System.out.println(Thread.currentThread().getName());
+
+	}
+
+}

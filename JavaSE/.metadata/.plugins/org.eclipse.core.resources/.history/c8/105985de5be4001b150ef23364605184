@@ -1,0 +1,20 @@
+package com.cg.jsep.ui;
+
+public class Test {
+
+	public static void main(String[] args) {
+		System.out.println(System.getenv("os"));
+		
+		int a = 100;
+		Integer obj = Integer.valueOf(a);
+		System.out.println(obj);
+		
+
+		
+		
+		
+	}
+
+}
+
+

@@ -1,0 +1,15 @@
+package com.cg.mtp.ui;
+
+
+class A extends Thread {
+	
+}
+
+public class App2 {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

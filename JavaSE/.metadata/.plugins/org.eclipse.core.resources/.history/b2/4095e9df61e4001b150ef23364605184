@@ -1,0 +1,18 @@
+package com.cg.jsep.ui;
+
+import java.time.LocalDate;
+
+public class App1 {
+
+	public static void main(String[] args) {
+		LocalDate today = LocalDate.now();
+		System.out.println(today);
+		LocalDate birthDay = LocalDate.of(1966, 4, 9);
+		System.out.println(birthDay);
+		
+		
+		
+
+	}
+
+}

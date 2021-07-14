@@ -1,0 +1,20 @@
+package com.cg.jsep.ui;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class App2 {
+
+	public static void main(String[] args) {
+		LocalDate today = LocalDate.now();
+		System.out.println(today);
+		LocalDate birthDay = LocalDate.of(1966, 4, 9);
+		System.out.println(birthDay);
+		LocalDate independenceDay = LocalDate.parse("1947-08-15");
+		System.out.println(independenceDay);
+		
+		
+	}
+
+}

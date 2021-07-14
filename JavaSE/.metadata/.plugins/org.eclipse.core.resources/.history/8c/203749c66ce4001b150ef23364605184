@@ -1,0 +1,23 @@
+package com.cg.jsep.ui;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class App5 {
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		
+		System.out.println("Enter date of birth [dd-MM-yyyy] ");
+		String strDob = scan.next();
+		LocalDate dateOfBirth = LocalDate.parse(strDob, dtf);
+		System.out.println(dateOfBirth.format(dtf));
+		
+		scan.close();
+		
+	}
+
+}

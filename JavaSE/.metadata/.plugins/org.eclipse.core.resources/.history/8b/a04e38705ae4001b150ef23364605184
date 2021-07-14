@@ -1,0 +1,14 @@
+package com.cg.jsep.ui;
+
+public class Test {
+
+	public static void main(String[] args) {
+		System.out.println(System.getenv("path"));
+		
+		
+		
+	}
+
+}
+
+

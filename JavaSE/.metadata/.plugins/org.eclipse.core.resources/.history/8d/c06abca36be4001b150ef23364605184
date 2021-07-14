@@ -1,0 +1,17 @@
+package com.cg.jsep.ui;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+public class App4 {
+
+	public static void main(String[] args) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate now = LocalDate.now();
+		System.out.println(now);
+		
+	}
+
+}

@@ -1,0 +1,18 @@
+package com.cg.jsep.ui;
+
+public class Test {
+
+	public static void main(String[] args) {
+		System.err.println("Critical Error ...");
+		System.exit(0);
+		// code ...
+		// code ...
+		System.out.println("testing ....");
+		
+		
+		
+	}
+
+}
+
+
