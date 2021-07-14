@@ -1,0 +1,41 @@
+/* 
+ * Priority between 1 to 10
+ * NORM_PRIORITY = 5
+ * MIN_PRIORITY = 1
+ * MAX_PRIORITY = 10
+ * 
+ */
+package com.cg.mtp.ui;
+
+public class App6 {
+
+	static class ChildThread extends Thread {
+		@Override
+		public void run() {
+			for(int i=1; i<=10; i++) {
+				System.out.println("Child => " + i);
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("In main()");
+		ChildThread child = new ChildThread();
+		
+		child.setPriority(Thread.MAX_PRIORITY);
+		
+		child.start();
+		
+		/* Child thread is executed first than other threads, since it has given 
+		 * MAX_PRIORITY.
+		 */
+		
+		System.out.println("In main() again");
+		for(int i=10; i>=1; i--) {
+			System.out.println("Main => " + i);
+		}
+		System.out.println("End of main()");
+
+	}
+
+}

@@ -235,11 +235,39 @@ multi threading
 thread : light weight process
 asynchronous execution of different parts of same program
 
-1) java.lang.Thread class
+1) extending java.lang.Thread class
 	public void run() {
 		// code for the thread
 	}
-2) java.lang.Runnable interface
+2) implementing java.lang.Runnable interface
+	public void run() {
+		// code for thread
+	}
+
+	Thread  thread = new Thread(Runnable object)
+
+why do we need runnable again?
+	
+	class  A   {
+	}
+
+	class  B  extends A {
+	}
+
+
+
+	class  B  extends A, Thread {
+	}   // multiple inheritance - not allowed
+
+
+	// allowed
+	class  B  extends A  implements Runnable {
+		
+	}
+
+
+
+	
 
 
 Thread life cycle:
@@ -256,8 +284,47 @@ start()
 run()
 stop()
 sleep(milli-seconds)
+setDaemon(true)
+
+
+
+
+thread class methods:
+------------------------------
+
 wait(), notify()
 suspend(), resume() => outdated
+
+join()
+
+
+ * Daemon thread is abruptly terminated when no other threads are running.
+ * It cannot run on its own.
+
+
+threadName.setDaemon(true);
+
+shared object that contains data accessed by multiple threads.
+(synchronization)
+
+1) synchronized methods
+2) synchronized blocks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
 
 
 

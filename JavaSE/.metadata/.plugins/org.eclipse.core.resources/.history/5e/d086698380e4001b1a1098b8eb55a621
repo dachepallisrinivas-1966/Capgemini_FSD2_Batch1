@@ -1,0 +1,12 @@
+/* Creates threads to sum numbers from 1 to given number */
+
+package com.cg.mtp.ui;
+
+public class App3 {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

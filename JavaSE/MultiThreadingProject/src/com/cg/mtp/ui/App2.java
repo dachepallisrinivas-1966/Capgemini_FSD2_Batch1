@@ -1,6 +1,5 @@
 package com.cg.mtp.ui;
 
-
 class ChildThread extends Thread {
 	@Override
 	public void run() {
