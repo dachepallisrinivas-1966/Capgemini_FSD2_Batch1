@@ -1,44 +1,6 @@
-*/bin/*
-bin/
-
-*.class
-
 NoShare/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-
-# Eclipse
+bin/
 .settings/
-*.project
-*.classpath
-.prefs
-*.prefs
 .metadata/
-
-# Intellij
-.idea/
-*.iml
-*.iws
-out/
-
-# VSCode
-.vscode/
-
-# Mac
-.DS_Store
-
-# Maven
-log/*
-target/
-
-# Gradle
-.gradle/
-
-
-
-
+FrameWorksGradleWorkspace/
 
