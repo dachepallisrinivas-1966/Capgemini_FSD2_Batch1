@@ -311,6 +311,105 @@ shared object that contains data accessed by multiple threads.
 2) synchronized blocks
 
 
+ 				Regular Expressions
+				--------------------
+                                    (java.util.regex)
+
+A regular expression defines a search pattern for strings. The short form for regular expression 
+is regex. 
+The search pattern can be anything from a simple character, a fixed string or a complex 
+expression containing special characters describing the pattern. 
+
+The pattern defined by the regex may match one or several times or not at all for a 
+given string.
+
+Regular expressions can be used to search, edit and manipulate text.
+It is mainly for validations.
+
+
+	.	any single character
+	\d	single digit from 0 - 9
+	\D	single character except digit
+	\s	space
+	\S	single character except space
+	[ ]	single character of given choice or range
+		eg: 	[A-Z]           any uppercase alphabet
+			[abcdA-E]       a,b,c,d,A,B,C,D,E
+			[0-9]           any digit
+	[^ ]	single character except within the range
+		eg:	[^ 1-5]         any digit other than 1,2,3,4,5
+
+occurance indicaters:
+	
+	?	0 to 1 time
+	*	0 to any no. of times
+	+	1 to any no. of times
+	{ n }	exactly 'n' times.
+	{ , m}	max. 'm' times and min. is '0'.
+	{n, m}	min. 'n' times and max. is 'm' times.
+
+eg:
+
+	mobile number	"\d{10}"
+	but in java, we must say "\\d{10}"
+
+	if we want to tell first character must not be 0, use the following pattern.
+	[1-9]\\d{9}
+
+	aadhar number	1234 1234 1234
+	pattern : \\d{4}\\s\\d{4}\\s\\d{4}
+
+	pincode		\\d{6}
+
+
+	vehicle number	eg: AP31 CK 9916
+				        AP31CK   1
+        [1-9]
+
+		[A-Z]{2} \d{2} [A-Z]{2} \s\d{, 3}
+
+	aadhar id		eg: 8414 6320 8422
+		\d{4} \s \d{4} \s \d{4}
+
+
+java.util.regex package:
+------------------------------
+
+a) Pattern class:		to represent regular expression.
+-----------------------
+	methods:
+	-------------
+	i)	public static 	Pattern 	compile(String   regexPattern)
+			it checks whether any small part of pattern is matching or not.
+	
+b) Matcher class:
+    methods:
+    i) public static   Matcher 	matcher(pattern, String)
+			it checks whether the entire string should exactly match the pattern.
+
+split method (of java.lang.String)
+    i) String [] split(String)
+            will extract the String based on the pattern specified.
+
+
+    public class RegExDemo {
+        public static void main(String [] args) {
+            String mobile = "9247175823";
+            String mobile2 = "92471";
+
+            // System.out.println(mobile.matches("[1-9][0-9]{9}"));
+            // System.out.println(mobile.matches("[1-9][0-9]{9}"));
+
+            Pattern mobP = Pattern.compile("[1-9][0-9]{9}");
+            Matcher m1 = mobP.matcher(mobile);
+            System.out.println(m1.matches());
+
+            String passage = "I have to port 9247212540 into a new 9247212539";
+            Matcher m2 = mobP.matcher(passage);
+            System.out.println(m2.find());
+        }
+    }
+
 
 
 
