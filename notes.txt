@@ -760,12 +760,46 @@ split method (of java.lang.String)
 
 
 
+
 ===============================================================================================
-Wrapper classes
-reg ex
-multi threading
-collections
-io streams
+Day-2   (15-july-2021)
+
+Collections
+
+
+java.lang.Comparable interface:
+	it provide the ability to compare objects for a class during sorting operation.
+
+
+	override compareTo()
+
+	int compareTo(Object o) {
+		// relevant code
+	}
+
+	return value is ZERO, if two objects are equal
+	return value is +VE, if invoking is object is big
+	eturn value is -VE, if paramter object is big
+
+java.util.Comparator interface
+	
+	it provide the ability to compare objects for a class during sorting operation.
+	we need not modify the source class (eg: Book)
+	we must create a sub class of Comparator interface.
+	and override compare() and provide respective logic.
+
+assignments:
+---------------------------------------
+1) vector example program
+2) difference between arraylist and vector	
+3) diff between enhanced for loop and iterator
+4) queue example program
+5) hashtable example program
+6) diff between hashtable and hashmap
+7) implement CategoryWise Sorted or BookList
+
+
+
 
 
 

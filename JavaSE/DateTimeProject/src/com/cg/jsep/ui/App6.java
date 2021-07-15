@@ -20,6 +20,7 @@ public class App6 {
 		String strTime2 = scan.next();
 		LocalTime time2 = LocalTime.parse(strTime2, DateTimeFormatter.ofPattern("HH:mm:ss"));
 		Duration duration = Duration.between(time1, time2);
+		
 		System.out.printf("%d hours, %d minutes, %d seconds",
 			    duration.toHoursPart(), duration.toMinutesPart(), duration.toSecondsPart()
 		);
