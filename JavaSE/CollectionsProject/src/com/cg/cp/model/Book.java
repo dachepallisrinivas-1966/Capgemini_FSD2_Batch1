@@ -1,6 +1,7 @@
 package com.cg.cp.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Book implements Comparable<Book> {
 	private int bcode;
@@ -64,8 +65,8 @@ public class Book implements Comparable<Book> {
 
 	@Override
 	public String toString() {
-		return String.format("[bcode=%s, bname=%s, datePublished=%s, price=%s, category=%s]", bcode, bname,
-				datePublished, price, category);
+		return String.format("[bcode=%s, bname=%s, datePublished=%s, price=%s, category=%s, hashcode = %d]", bcode, bname,
+				datePublished, price, category, hashCode());
 	}
 
 	@Override
@@ -78,6 +79,37 @@ public class Book implements Comparable<Book> {
 			return -1;
 		
 		// return this.bname.compareTo(o.bname);
-		
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(bcode, bname, category, datePublished, price);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		return bcode == other.bcode && Objects.equals(bname, other.bname) && category == other.category
+				&& Objects.equals(datePublished, other.datePublished)
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
+	}
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		Book book = (Book) obj;
+//		return this.bcode == book.bcode;	
+//	}
+//
+//	@Override
+//	public int hashCode() {
+//		return this.bcode;
+//	}
+	
+	
 }

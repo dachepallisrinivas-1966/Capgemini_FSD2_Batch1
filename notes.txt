@@ -693,10 +693,11 @@ It is mainly for validations.
 			    [0-9]           any digit
 	[^ ]	single character except within the range
 		eg:	[^ 1-5]         any digit other than 1,2,3,4,5
+	\w 	(word character) matches any single alphabet, digit or underscore (same as [a-zA-Z0-9_] ).
 
 occurance indicaters:
 	
-	?	0 to 1 time
+	?	0 to 1 time 
 	*	0 to any no. of times
 	+	1 to any no. of times
 	{ n }	exactly 'n' times.
@@ -797,6 +798,70 @@ assignments:
 5) hashtable example program
 6) diff between hashtable and hashmap
 7) implement CategoryWise Sorted or BookList
+
+====================================================================================================================
+Day-3   [16-july-2021]
+
+class Student {
+	rollno
+	name
+
+	// constructors, s, g, t
+}
+
+Student s1 = new Student(1, "abcd");
+Student s2 = new Student(1, "abcd");
+
+System.out.println(s1 == s2);	// false
+System.out.println(s1.equals(s2)); // true
+
+
+There is contract between equals() and hashCode() ?
+	when two objects are true as per equals() method, then the hashcodes must be true.
+
+
+
+					Multi-Layered Architecture
+					--------------------------
+
+
+UI  <-->  Service  <--> DAO Layer (persistence layer)  <-->   DB / IOStream / Collection....
+	  
+SoC   (Seperation of Concern)
+Program-to-interfaces
+Loosely Coupled
+
+Design Patterns
+DAO (Data Access Object) design pattern 
+
+
+Exception handling must be done only in UI Layer. (try-catch)
+Remaining layers simply throw the exception to the previous layer  (Exception Propogation)
+
+CRUD (Create-Read-Update-Delete) operations
+
+Service -> Business Logic (validations, computations) + calling the respective DAO implementation methods
+Validations can be done using regular expressions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 
