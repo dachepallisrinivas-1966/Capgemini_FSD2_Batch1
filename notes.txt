@@ -1,5 +1,6 @@
 Neeraj, Yogita
 
+
 Day-1	(14-july-2021)
 ====================================================================
 1. basics of java
@@ -644,8 +645,28 @@ assignment:
 	6) difference between hashtable and hashmap
 
 	
+Develop a multi-layered application to manage employees of an organization.
 
+EmployeeManagementSystem
+-------------------------------
+Employee
+	empNumber, empName, dateJoined, basicSalary, hra, da, net
+	hra = 80% of basicSalary
+	da = 60% of basicSalary
+	net = basicSalary + hra + da
+	
+	include validations.
 
+Application should be able to
+	i) add a new employee
+	ii) remove an existing employee when empNumber is given
+	iii) list all the employees in the alphabetical order of empName
+	iv) list all the employees in the order of recent to past.
+	v) list all the employees as per their salary increasing order
+	vi) update an existing employee (empNumber should not be modified)
+	
+	
+	
 
 
 
@@ -843,12 +864,58 @@ CRUD (Create-Read-Update-Delete) operations
 Service -> Business Logic (validations, computations) + calling the respective DAO implementation methods
 Validations can be done using regular expressions.
 
+=========================================================================================================================
+Day-4   [17-july-2021]
+
+						IOStream (java.io)
+						------------------
+To store data permanantly.
+stream: flow of data 
+
+1) character stream (or) text stream
+	Reader
+		BufferedReader
+		FileReader
+			read() : read one character at a time. it return an int.
+	Writer
+		BufferWriter
+		PrintWriter
+		FileWriter
+	to store textual information.
+
+2) byte stream (or) binary stream
+	InputStream
+		FileInputStream
+		ObjectInputstream
+	OutputStream
+		FileOutputStream
+		ObjectOutputStream
+
+	to store images, audio, video, objects.
+
+When ever you open a file, it occupy a special memory, known as "resource".
+The file must be closed once the job is done. otherwise it leads to "resource leak".
 
 
+JDK1.7  :  try-with-resources
+	it will take care of closing the resource.
+	
+	try (open_your_resource_here) {
 
+	} catch(Exception  e) {
 
+	}
 
+	resource you mention in the try block, must be an AutoClosable.
+	AutoClosable is an interface.
 
+assignment
+---------------------
+1) create a text file "courses.txt", store few course names.
+   write a java program to read the contents of the above file and with the same content create a new file "new-courses.txt"
+   (File Copy Program)
+
+	
 
 
 
