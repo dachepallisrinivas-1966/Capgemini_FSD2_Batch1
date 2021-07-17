@@ -37,7 +37,14 @@ public class BookList {
 		}
 		System.out.println("-----------------------------------------");
 		
-		Collections.sort(books, new PriceComparator());
+		// Collections.sort(books, new PriceComparator());
+		
+		Collections.sort(books, (o1, o2) -> {
+			Double p1 = o1.getPrice();
+			Double p2 = o2.getPrice();
+			
+			return p1.compareTo(p2);
+		});
 		
 		for(Book book : books) {
 			System.out.println(book);
