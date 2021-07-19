@@ -2339,6 +2339,93 @@ SELECT DISTINCT deptno FROM employees;
 ===============================================================================
 
 
+							JDBC API
+						(Java Database Connectivity)
+
+							(java.sql)
+
+set of interfaces, abstract methods.
+
+JavaApp		<--->	JDBC Driver	<-->	DB (PostGre/Oracle/MySQL)
+
+JDBC Driver
+	It is a jar (java archieve) file. It is a collection of ".class" files.
+	DB Vendors will supply JDBC Drivers.
+	All JDBC Drivers are implementations of JDBC API.
+
+JavaApp		<--->	PostGre JDBC Driver	<-->	DB 
+
+we will be using Type-4 Drivers (Thin driver)
+
+steps:
+-------
+0. load the driver class     	(driver class name) -  optional 
+1. estabish connection		(connection string url)
+2. do the operation(s) with the db
+3. close the connection.
+
+Connection interface
+    getMetaData()
+    createStatement() : return a Statement object
+    prepareStatement(sql) : return a PreparedStatement object
+    prepareCall()
+    setAutoCommit(boolean) : default is true
+DriverManager class
+    getConnection(String url, String userName, String password)
+DatabaseMetaData class
+    getDatabaseProductName()
+    getDatabaseProductVersion()
+
+Statement interface
+    executeQuery(sql)  : SELECT 
+    execute(sql)       : mainly for batch update
+    executeUpdate(sql) : INSERT, UPDATE, DELETE
+PreparedStatement interface
+    executeQuery()  : SELECT 
+    execute()       : mainly for batch update, DDL commands
+    executeUpdate() : INSERT, UPDATE, DELETE
+Callable interface
+    is mainly to work with stored procedures, stored functions in the database.
+ResultSet interface
+    contain the data returned by the database as a result of executing SELECT statement.
+    next()  
+
+
+
+Assignment:
+---------------
+1. updating salary of an employee
+2. deleting an employee when empno is given
+
+
+						Gradle
+						------
+Gradle is a build tool.
+it will download necessary jar files from the internet repositories.
+Maven Repository etc.,
+
+Java Project
+Gradle Project	->	build.gradle -> groovy script -> list all the dependencies
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
