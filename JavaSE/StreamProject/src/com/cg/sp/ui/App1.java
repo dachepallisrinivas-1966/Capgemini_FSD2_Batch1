@@ -11,10 +11,16 @@ public class App1 {
 		List<Employee> empList = Arrays.asList(
 			new Employee(101, "Srinivas", 40000.0),
 			new Employee(102, "Saranya", 45000.0),
+			new Employee(103, "Sagar", 10000.0),
 			new Employee(103, "Sagar", 10000.0)
+			
 		);
-		
+
 		empList.stream().forEach( (e) ->  System.out.println(e) );
+		System.out.println(empList.stream().count());
+		
+		empList.stream().distinct().forEach( e -> System.out.println(e) );
+
 	}
 
 }

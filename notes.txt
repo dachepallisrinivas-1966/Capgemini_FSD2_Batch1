@@ -1088,6 +1088,11 @@ operators    accepts         returns             does                           
         here we are not calling println, rather we are passing println function to System.out
         and on every element println is executed.
 
+
+
+Day-5 [19-july-2021]
+===========================================================================================
+
         create a map with empid as key and emp object as value:
         -------------------------------------------------------
         Map<Integer, Employee> empMap = 
@@ -1234,6 +1239,1110 @@ Object[]                        toArray()
 
 
 	
+
+var names = new String[] { "Python", "Java", "C#", "JavaScript", "C", "Ruby", "Typescript" };
+Arrays.stream(names).filter(n -> n.length() >= 4)		// Predicate - boolean test(Object)
+			.sorted()
+			.forEach(n -> System.out.println(n));	// Consumer - void accept(Object)
+
+----------------------------------------------
+String marks[] =  {"50", "90", "56", "98", "76" };
+int sum = Arrays.stream(marks)
+		.mapToInt(s -> Integer.parseInt(s))
+		.sum()
+System.out.println(sum);
+
+---------------------------------------------------
+
+class TotalMarks {
+public static void isNumber(String s) {
+	return Pattern.matches("\\d+", s);
+}
+
+String marks[] =  {"50", "90", "56", "98", "76", "789", "abcd" };
+int sum = Arrays.stream(marks)
+		.filter(s -> s.isNumber(s))
+		.mapToInt(s -> Integer.parseInt(s))
+		.sum()
+System.out.println(sum);
+}
+----------------------------------------------------
+
+class TotalMarks {
+public static void isNumber(String s) {
+	return Pattern.matches("\\d+", s);
+}
+
+String marks[] =  {"50", "90", "56", "98", "76", "789", "abcd" };
+int sum = Arrays.stream(marks)
+		.filter(TotalMarks::isNumber)
+		.mapToInt(s -> Integer.parseInt(s))
+		.filter(n -> n <= 100)
+		.sum()
+System.out.println(sum);
+}
+
+-----------------------------------------------------
+class TotalMarks {
+public static void isNumber(String s) {
+	return Pattern.matches("\\d+", s);
+}
+
+String marks[] =  {"50", "90", "56", "98", "76", "789", "abcd" };
+Optional<double> average = Arrays.stream(marks)
+		.filter(TotalMarks::isNumber)
+		.mapToInt(s -> Integer.parseInt(s))
+		.filter(n -> n <= 100)
+		.average()
+System.out.println(average.getAsDouble());
+}
+-----------------------------------------------------
+
+Files.lines(Path.of("names.txt"))
+	.filter(n -> Pattern.matches("[a-zA-Z ]+", n)
+	.distinct()
+	.sorted()
+	.limit(4)
+	.forEach(System.out::println)
+-----------------------------------------------------
+
+
+
+                                    RDBMS
+                    (Relational Database Management System)
+                    =======================================
+
+data : collection of facts found in an entity worth remembering.
+data processing : operations on data like add, delete, modify,sort, searching 
+        data etc.,
+information : output of data processing
+
+database : repository of data
+database management : adding,deleting,modifying database objects like 
+            table, views, indexes etc.,
+DBMS : collection of software tools that can manage these database objects 
+        efficiently.
+
+DBMS Models:
+------------
+1) network model
+2) hierarchical
+3) relational model     (RDBMS)
+
+relation -> collection tuples -> collection of attributes -> attribute contain data
+(table  ->  rows    ->      columns     ->      placeholder of data)
+
+RDBMS products:
+----------------
+1) Postgre SQL      
+2) MySQL
+3) Oracle
+4) DB2
+5) MS SQL Server
+
+SQL     (Structured Query Langauge)
+-----------------------------------
+1. earlier name is sequel
+2. it is a common language used to work with any RDBMS product
+3. it is a non-procedural language (command based, interactive mode)
+4. it is case insensitive
+5. each command (statement) must be terminated by semi-colon ( ; )
+6. clauses must be written in separate lines for readability (CODING STANDARDS)
+7. keywords must be in uppercase and identifiers must be in lowercase.
+
+pgAdmin  :   It is a tool where you can work with Postgre graphically also.
+psql     :   command shell of PostGre SQL
+postgres :   default database supplied during installation
+postgres :   default user name
+             password for this user is installation password.
+
+SQL commands - Categories
+--------------------------
+DDL (Data definition language)      -   CREATE / ALTER / DROP / TRUNCATE 
+DML (Data manipulation language)    -   INSERT  / UPDATE / DETELE
+DRL (Data retrieval language)       -   SELECT
+TCL (Transaction control language)  -   COMMIT / ROLLBACK
+
+
+psql data types:
+----------------
+char        : to store fixed length strings
+              spaces are added at the end.  (space-padding)
+varchar     : to store varying length strings.
+               
+int
+float
+date        : special values - 'today'
+              valid formats - YYYY/MM/DD, DD-MM-YYYY
+time        : special values - 'allballs'  - 00:00:00s
+timestamp
+serial      -   generate auto-incremented values
+money
+
+
+ename       char(30)    
+
+    ravi..........  (4 + 26 spaces) =   30 bytes    
+    sudha.........  (5 + 25 spaces) =   30 bytes
+    uma...........  (3 + 27 spaces) =   30 bytes
+
+ename       varchar(30)
+    ravi                            =   4 bytes
+    sudha                           =   5 bytes
+    uma                             =   3 bytes
+
+
+
+
+psql offer slash commands (\)
+
+1) \q   :   to come out of psql (shell)
+2) \d   :   list of tables, sequences
+3) \dt  :   list of tables only
+4) \!   :   to execute host operating system commands
+            \!  cls
+5) \?   :   to list all slash comands
+6) \l	:   to list all databases
+
+
+CREATE  TABLE   sales
+(itemno     int,
+ itemname   varchar(20),
+ unitrate   float,
+ qty        float
+);
+
+structure of the table : column names, data types etc.,
+
+how to see the structure of the table?
+--------------------------------------
+\dS    tableName
+
+
+
+Day - 13
+--------------------------------------------------------------
+INSERT:
+    to add new rows.
+syntax:
+    INSERT  INTO   tablename [ (column-list)]
+    VALUES  (value-list)
+
+date and character literals must be enclosed within single quotes.
+
+INSERT INTO sales
+VALUES (101, 'mouse', 300, 2);
+
+INSERT INTO sales
+VALUES (102, 'speakers', 650, 1);
+
+INSERT INTO sales (itemno, itemname)
+VALUES (103, 'web cam');
+
+INSERT INTO sales (itemno, unitrate, qty)
+VALUES (105, 500, 8);
+
+
+SELECT:
+    to retrieve rows.
+syntax:
+    SELECT  column-list/*
+    FROM    tablename;
+
+SELECT *
+FROM    sales;
+
+
+DELETE:
+    to delete a row.
+syntax:
+    DELETE  FROM   tablename
+    [WHERE  condition];
+
+DELETE  FROM sales
+WHERE itemno = 104;
+
+UPDATE:
+    to modify data in an existing row.
+syntax:
+    UPDATE  tablename
+    SET  col-1 = value-1 [, col-2 = value-2, ...]
+    [WHERE  condition];
+
+UPDATE   sales
+SET  unitrate = 800, qty = 6
+WHERE itemno = 103;
+
+UPDATE   sales
+SET   itemname = 'micro phone'
+WHERE itemno = 105;
+
+
+TRUNCATE TABLE:
+    to delete all rows from the table.
+    data cannot be retrieved back.
+    but the table remains in the database.
+syntax:
+    TRUNCATE  TABLE  tablename;
+
+TRUNCATE  TABLE sales;
+
+DROP  TABLE:
+    to remove the table permanantly from the database.
+syntax:
+    DROP   TABLE  tablename;
+
+DROP TABLE sales;
+
+
+                                        Integrity Constraints
+                                        ---------------------
+These constraints can be given on a column (or) on combination of columns.
+These are verified automatically by the Postgre whenever a row is INSERTed/UPDATEed/DELETEed.
+One column can have a single constraint or multiple constraints also.
+
+1) NOT NULL
+2) UNIQUE
+3) PRIMARY key
+4) REFERENCES  (FOREIGN KEY)
+5) CHECK (condition)
+6) DEFAULT  value
+
+Primary Key:
+------------
+1. It identify each row uniquely.
+2. A Primary is a single column or combination of columns.
+3. It should not allow values.
+4. It should not allow duplicate values.
+5. A table can have ONLY ONE primary key.
+5. It create internaly an INDEX on the primary key column. This index is automatically used
+   whenever we are performing a search opeation on this column.
+
+Foreign Key:
+------------
+1. It establishes relation from a child table to a parent table.
+2. Foreign key is a single column or combination of columns.
+3. It allow null values.
+4. it allow duplicate values.
+5. A table can have many foreign keys.
+6. Every foreign key should be defined as a PRIMARY KEY or UNIQUE KEY in it's parent table.
+
+
+Constraints can be given in two ways.
+1) column-level specification   (along with column definition)
+        is used to specify a constraint on a single column
+2) table-level specification    (after the last column specification)
+        is used to specify a constraint on a single column or on combination of columns.
+        we cannot define NOT NULL constraint as table level specification.
+
+every constraint should be given a unique name (CODING STANDARD)
+it is generally in the form of tablename_columnname_constraintshortcut (CODING STANDARD)
+
+create a table departments with the following columns.
+    deptno (p), dname, location 
+
+CREATE  TABLE  departments
+(deptno     int     CONSTRAINT   departments_deptno_pk  PRIMARY KEY,
+ dname      varchar(20)  CONSTRAINT departments_dname_nn    NOT NULL,
+ location   varchar(20)
+);
+
+(or)
+
+CREATE  TABLE  departments
+(deptno     int,
+ dname      varchar(20)  CONSTRAINT departments_dname_nn    NOT NULL,
+ location   varchar(20),
+ CONSTRAINT   departments_deptno_pk  PRIMARY   KEY  (deptno)
+);
+
+
+create a table employees with the following columns.
+    empno (p), ename (nn), doj (it should not be a future date), salary (min is 5000),
+    deptno (f)
+
+CREATE  TABLE  employees
+(empno  int  CONSTRAINT  employees_empno_pk  PRIMARY  KEY,
+ ename  varchar(20) CONSTRAINT employees_ename_nn  NOT NULL,
+ doj    date   CONSTRAINT  employees_doj_chk  CHECK  (doj <= current_date),
+ salary float  CONSTRAINT  employees_salary_chk CHECK (salary >= 5000),
+ deptno int  CONSTRAINT  employees_deptno_fk  REFERENCES departments(deptno)
+);
+
+
+ALTER TABLE:
+------------
+    to modify the structure of the table ...
+    + add a new column
+    + removing a column
+    + change the data type of a column
+    + change the size of a column
+    + add a contraint (using table level specifications)
+    + remove a constraint (using table level specifications)
+    + rename a column
+
+syntax:
+    ALTER  TABLE   tablename
+    [ ADD | ALTER | DROP | RENAME ]  (column specification);
+
+CREATE TABLE test
+(empno int,
+ ename varchar(5)
+);
+
+ALTER TABLE test
+ADD COLUMN salary  float;
+
+How to add multiple columns at a time?
+ALTER TABLE test
+ADD COLUMN c1 int, ADD COLUMN c2 int;
+
+ALTER TABLE test
+ALTER COLUMN ename TYPE varchar(6);
+
+ALTER TABLE test
+DROP COLUMN c1;
+
+How to remove multiple columns at once?
+...
+
+ALTER TABLE test
+ADD CONSTRAINT test_empno_pk PRIMARY KEY(empno);
+
+ALTER TABLE test
+DROP CONSTRAINT test_empno_pk;
+
+ALTER TABLE test
+ADD CONSTRAINT test_salary_chk CHECK (salary >= 10000);
+
+ALTER TABLE test
+DROP CONSTRAINT test_salary_chk;
+
+ALTER TABLE test
+RENAME COLUMN salary TO sal;
+
+
+SELECT:
+-------
+SELECT 2*3+4;
+
+SELECT 5/10;
+
+bonus is 10% of the salary.
+
+SELECT empno, ename, doj, salary, deptno, salary*10/100
+FROM  employees;
+
+monthly salary of all employees?
+(salary + allowance)
+
+SELECT empno, ename, salary, allowance, salary+allowance as "Monthly Salary"
+FROM employees;
+
+"Montly Salary" is called as column alias.
+
+concatenated columns:
+---------------------
+two or more columns can be concatenated by using concatenation operator ( || ).
+
+SELECT  empno, first_name || ' ' || last_name 
+FROM    employees;
+
+column aliases:
+---------------
+It is a new name given for a column used in the output of select statement.
+It is generally used for derived or computational columns.
+
+SELECT  empno, first_name || ' ' || last_name AS "Full Name"
+FROM    employees;
+
+
+NULL:
+-----
+    when a column lacks value, then it is said to be NULL.
+    a NULL is not same as 0.
+    it is either unavailable, unpredicted or undetermined.
+    any arithmetic operation performed with NULL value leads to NULL result.
+
+NULLIF(value-1, value-2)
+    it replace value-1 in the expression if value-2 is null.
+
+SELECT empno, ename, salary, allowance, NULLIF(0, salary)+allowance as "Monthly Salary"
+FROM employees; 
+
+
+DISTINCT:
+    to elimnate duplicate rows in the output.
+
+SELECT DISTINCT deptno
+FROM employees;
+
+SELECT DISTINCT deptno, salary
+FROM employees;
+
+WHERE:
+------
+    to display rows that satisify given condition.
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  deptno = 10;
+
+SELECT empno, ename
+FROM employees
+WHERe ename = 'ramu';       (comparision is always case sensitive)
+
+SELECT empno, ename, doj
+FROM employees
+WHERE doj >= '01-01-2000';
+
+AND, OR, NOT        (logical operators)
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  deptno = 10 
+AND salary >= 5000;
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  deptno = 10 
+OR salary >= 5000;
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  NOT deptno = 10;
+
+(or)
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  deptno != 10;
+
+SQL Operators:
+1) IN   (value-1, value-2, ...)
+2) BETWEEN  value-1 AND value-2
+        value-1  <= value-2
+
+3) LIKE     'character-pattern'
+        wild card searching
+        %   replace 0 or more unknown characters
+        _   replace 0 or 1 unknown characters
+
+4) ILIKE
+    performs case insensitive search
+
+5) IS NULL
+
+Negation Opertors:
+------------------
+1) NOT IN   (value-1, value-2, ...)
+2) NOT BETWEEN  value-1 AND value-2
+3) NOT LIKE     'character-pattern'
+4) NOT ILIKE     'character-pattern'
+5) IS NOT NULL
+
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  salary BETWEEN 2000 AND 7000;
+
+(or)
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  salary >= 2000 AND salary <= 7000;
+
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  deptno IN (10,30,20);
+
+(or)
+
+SELECT  empno, ename, salary, deptno
+FROM employees
+WHERE  deptno  = 10  OR  deptno = 30  OR  deptno = 20;
+
+SELECT empno, ename
+FROM employees
+WHERE ename LIKE 'r%';
+
+SELECT empno, ename
+FROM employees
+WHERE ename LIKE '%r';
+
+SELECT empno, ename
+FROM employees
+WHERE ename LIKE '%r%';
+
+display all employees whose name contain second character as 'a'.
+
+SELECT empno, ename
+FROM employees
+WHERE ename LIKE '_a%';
+
+display all employees who do not belong to any department.
+
+SELECT empno, ename, deptno
+FROM employees
+WHERE deptno IS NULL;
+
+ORDER BY:
+----------
+The order of retrieval of rows from the select command is uncertain.
+to control the order of retreival, we can use ORDER BY clause.
+if used, ORDER BY must be the last clause in statement.
+
+
+SELECT empno, ename, salary
+FROM employees
+ORDER BY salary desc;
+
+
+SELECT empno, ename, salary
+FROM employees
+ORDER BY salary desc NULLS LAST;
+
+SELECT empno, ename, salary, deptno
+FROM employees
+ORDER BY deptno, ename DESC;
+
+SELECT empno, ename, salary, deptno
+FROM employees
+WHERE salary >= 5000
+ORDER BY deptno;
+
+
+						BUILT-IN Functions
+						==================
+
+
+string functions:
+==================
+1) length(string)
+	SELECT length('Vamsy Kiran');
+2) lower(string)
+3) upper(string)
+4) ltrim(string)
+5) rtrim(string)
+6) trim(string)
+7) lpad(string, length, pad_string)
+	SELECT lpad('Vamsy', 8, 'A');
+        lpad
+----------------------
+ 'AAAVamsy'
+
+8) rpad(string, length, pad_string)
+9) initcap(string)
+10) substring( string [from start_position] [for length] )
+	SELECT substring('Vamsy Kiran' from 1 for 4);
+ 
+	substring
+	-----------
+	 Vams
+
+11) repeat(string, number)
+	SELECT repeat('vamsy', 2);
+	
+	vamsyvamsy
+
+12) replace( string, from_substring, to_substring )
+
+	SELECT replace('vamsy kiran', 'vamsy', 'surya');
+
+
+numeric/math functions:
+=======================
+1) abs(number)
+2) mod(n, m)
+3) power(m, n)
+6) sign(n)
+7) sqrt(n)
+8) ceiling(n)
+9) floor(n)
+10) random()
+	To create a random decimal number between two values (range), you can use the following formula:
+		SELECT random()*(b-a)+a;
+	
+	Where a is the smallest number and b is the largest number that you want to generate a random number for.
+
+	SELECT random()*(25-10)+10;
+
+	Random Integer Range
+	To create a random integer number between two values (inclusive range), you can use the following formula:
+
+	SELECT floor(random()*(b-a+1))+a;
+	Where a is the smallest number and b is the largest number that you want to generate a random number for.
+
+	SELECT floor(random()*(25-10+1))+10;
+	The formula above would generate a random integer number between 10 and 25, inclusive.
+
+11) round( number, [ decimal_places ] )
+12) trunc( number, [ decimal_places ] )
+
+
+
+aggregate functions: (same as ANSI SQL)
+==================== 
+13) sum
+14) min
+15) max
+16) count
+17) avg
+
+
+Note:
+-----
+aggregate functions are not allowed in WHERE clause.
+
+
+date functions:
+===============
+18) current_date
+	SELECT current_date;
+
+	SELECT current_date + 1;
+19) current_time
+	SELECT current_time;
+20) now
+	SELECT now();
+21) age( [date1,] date2 )
+
+	SELECT age(timestamp '2014-01-01'); 	/* from current date */
+	SELECT age(timestamp '2014-04-25', timestamp '2014-01-01');
+	SELECT age(timestamp '2014-04-25', timestamp '2014-04-17');
+	SELECT age(current_date, timestamp '2012-09-16');
+
+22) extract( unit from date )
+
+unit	Explanation
+--------------------
+century	Uses the Gregorian calendar where the first century starts at '0001-01-01 00:00:00 AD'
+day	Day of the month (1 to 31)
+decade	Year divided by 10
+dow	Day of the week (0=Sunday, 1=Monday, 2=Tuesday, ... 6=Saturday)
+doy	Day of the year (1=first day of year, 365/366=last day of the year, depending if it is a leap year)
+epoch	Number of seconds since '1970-01-01 00:00:00 UTC', if date value. Number of seconds in an interval, if interval value
+hour	Hour (0 to 23)
+isodow	Day of the week (1=Monday, 2=Tuesday, 3=Wednesday, ... 7=Sunday)
+isoyear	ISO 8601 year value (where the year begins on the Monday of the week that contains January 4th)
+microseconds	Seconds (and fractional seconds) multiplied by 1,000,000
+millennium	Millennium value
+milliseconds	Seconds (and fractional seconds) multiplied by 1,000
+minute	Minute (0 to 59)
+month	Number for the month (1 to 12), if date value. Number of months (0 to 11), if interval value
+quarter	Quarter (1 to 4)
+second	Seconds (and fractional seconds)
+timezone	Time zone offset from UTC, expressed in seconds
+timezone_hour	Hour portion of the time zone offset from UTC
+timezone_minute	Minute portion of the time zone offset from UTC
+week	Number of the week of the year based on ISO 8601 (where the year begins on the Monday of the week that contains January 4th)
+year	Year as 4-digits
+
+
+postgres=# SELECT extract(day from date '2014-04-25');
+ date_part
+-----------
+        25
+(1 row)
+
+postgres=# SELECT extract(month from date '2014-04-25');
+ date_part
+-----------
+         4
+(1 row)
+
+postgres=# SELECT extract(year from date '2014-04-25');
+ date_part
+-----------
+      2014
+(1 row)
+
+
+conversion functions:
+=====================
+22) to_char( value, format_mask )
+
+With numbers:
+-------------
+Parameter	Explanation
+----------------------------
+9	Value (with no leading zeros)
+0	Value (with leading zeros)
+.	Decimal
+,	Group separator
+PR	Negative value in angle brackets
+S	Sign
+L	Currency symbol
+D	Decimal
+G	Group separator
+MI	Minus sign (for negative numbers)
+PL	Plus sign (for positive numbers)
+SG	Plus/minus sign (for positive and negative numbers)
+RN	Roman numerals
+TH	Ordinal number suffix
+th	Ordinal number suffix
+V	Shift digits
+EEEE	Scientific notation
+
+
+SELECT to_char(1210, '9999.99');
+1210.00
+
+SELECT to_char(1210.7, '9G999.99');
+1,210.70
+
+SELECT to_char(1210.7, 'L9G999.99');
+$ 1,210.70
+
+SELECT to_char(121, '9 9 9');
+1 2 1
+
+SELECT to_char(121, '00999');
+00121
+
+
+with dates:
+-----------
+
+Parameter	Explanation
+----------------------------
+YYYY	4-digit year
+Y,YYY	4-digit year, with comma
+YYY
+YY
+Y	Last 3, 2, or 1 digit(s) of year
+IYYY	4-digit year based on the ISO standard
+IYY
+IY
+I	Last 3, 2, or 1 digit(s) of ISO year
+Q	Quarter of year (1, 2, 3, 4; JAN-MAR = 1).
+MM	Month (01-12; JAN = 01).
+MON	Abbreviated name of month in all uppercase
+Mon	Abbreviated name of month capitalized
+mon	Abbreviated name of month in all lowercase
+MONTH	Name of month in all uppercase, padded with blanks to length of 9 characters
+Month	Name of month capitalized, padded with blanks to length of 9 characters
+month	Name of month in all lowercase, padded with blanks to length of 9 characters
+RM	Month in uppercase Roman numerals
+rm	Month in lowercase Roman numerals
+WW	Week of year (1-53) where week 1 starts on the first day of the year
+W	Week of month (1-5) where week 1 starts on the first day of the month
+IW	Week of year (01-53) based on the ISO standard
+DAY	Name of day in all uppercase, padded with blanks to length of 9 characters
+Day	Name of day capitalized, padded with blanks to length of 9 characters
+day	Name of day in all lowercase, padded with blanks to length of 9 characters
+DY	Abbreviated name of day in all uppercase
+Dy	Abbreviated name of day capitalized
+dy	Abbreviated name of day in all lowercase
+DDD	Day of year (1-366)
+IDDD	Day of year based on ISO year
+DD	Day of month (01-31)
+D	Day of week (1-7, where 1=Sunday, 7=Saturday)
+ID	Day of week based on ISO year (1-7, where 1=Monday, 7=Sunday)
+J	Julian day; the number of days since midnight on November 24, 4714 BC
+HH	Hour of day (01-12)
+HH12	Hour of day (01-12)
+HH24	Hour of day (00-23)
+MI	Minute (00-59)
+SS	Second (00-59)
+MS	Millisecond (000-999)
+US	Microsecond (000000-999999)
+SSSS	Seconds past midnight (0-86399)
+am, AM, pm, or PM	Meridian indicator
+a.m., A.M., p.m., or P.M.	Meridian indicator
+ad, AD, a.d., or A.D	AD indicator
+bc, BC, b.c., or B.C.	BC indicator
+TZ	Name of time zone in uppercase
+tz	Name of time zone in lowercase
+CC	2-digit century
+
+
+SELECT to_char(date '2014-04-25', 'YYYY/MM/DD');
+2014/04/25
+
+SELECT to_char(date '2014-04-25', 'MMDDYY');
+ 042514
+
+SELECT to_char(date '2014-04-25', 'Month DD, YYYY');
+ April     25, 2014
+
+
+
+23) to_date( string1, format_mask )
+
+SELECT to_date('2014/04/25', 'YYYY/MM/DD');
+  to_date
+------------
+ 2014-04-25
+
+
+postgres=# SELECT to_date('033114', 'MMDDYY');
+  to_date
+------------
+ 2014-03-31
+
+postgres=# SELECT to_date('February 08, 2014', 'Month DD, YYYY');
+  to_date
+------------
+ 2014-02-08
+
+
+24) to_number( string1, format_mask )
+
+
+SELECT to_number('1210.73', '9999.99');
+ to_number
+-----------
+   1210.73
+
+postgres=# SELECT to_number('1,210.73', '9G999.99');
+ to_number
+-----------
+   1210.73
+
+postgres=# SELECT to_number('$1,210.73', 'L9G999.99');
+ to_number
+-----------
+   1210.73
+
+postgres=# SELECT to_number('$1,210.73', 'L9G999');
+ to_number
+-----------
+      1210
+
+
+GROUP BY:
+---------
+used to divide rows into groups, and we can perform any aggregate operations on each group.
+
+
+
+SELECT deptno, SUM(salary)
+FROM employees
+GROUP BY deptno;
+
+SELECT deptno, SUM(salary)
+FROM employees
+GROUP BY deptno
+ORDER BY SUM(salary) DESC;
+
+
+Note:
+-----
+The column that is not surrounded by any aggregate function in the select column list
+must be included in the group by clause.
+
+
+Day - 14
+-----------------------------------------------------------------------------
+
+HAVING clause:
+--------------
+    this is used to filter rows after grouping.
+
+SELECT deptno, SUM(salary)
+FROM employees
+GROUP BY deptno
+HAVING SUM(salary) > 10000;
+
+SELECT deptno, SUM(salary)
+FROM employees
+WHERE deptno > 50
+GROUP BY deptno
+HAVING SUM(salary) > 10000;
+
+What is the difference between WHERE and HAVING ?
+-------------------------------------------------
+WHERE clause is used to filter rows before grouping.
+HAVING clause is used to filter rows after grouping.
+
+WHERE clause do not permit to use aggregate functions.
+HAVING clause support aggregate functions.
+
+WHERE clause is no way related to GROUPing.
+HAVING clause should always be used along with GROUP BY clause.
+
+
+                                LIMIT, OFFSET, FETCH
+                                --------------------
+
+LIMIT is not a standard SQL clause.
+
+to return top 3 earners.
+SELECT empno, ename, salary
+FROM employees
+ORDER BY salary DESC NULLS LAST
+LIMIT 3;
+
+
+to return all rows start from 6 to 15.
+SELECT *
+FROM persons
+OFFSET 5 LIMIT 10;
+
+to return all rows start from row 20 till the last row.
+SELECT *
+FROM persons
+OFFSET 20;
+
+instead of LIMIT clause, we can use FETCH.  (it is an SQL standard)
+------------------------------------------
+FETCH FIRST
+
+to display from row 6 to 15.
+SELECT *
+FROM persons
+OFFSET 5 FETCH FIRST 10 ROW ONLY;
+
+
+
+creating database:
+------------------
+syntax:
+    CREATE  DATABASE   databaseName;
+
+CREATE DATABASE emdb;
+
+
+to list all databases:
+----------------------
+\l
+
+how to connect to a particular database?
+----------------------------------------
+\c databaseName;
+
+\c emdb;
+
+deleting database:
+------------------
+syntax:
+    DROP  DATABASE  databaseName;
+
+DROP  DATABASE emdb;
+
+SEQUENCE:
+---------
+It is also database object (like table, view, index).
+It is used to generate series and these values can be used to supply data into field
+during insert command.
+
+SERIAL datatype:
+----------------
+It is a data type of PSQL. (int type)
+When a column is assigned serial type, internally a sequence is created.
+using the sequence, values are generated and they are inserted into the column whose datatype
+is serial.
+the sequqnce name is automatically takes as "tablename_columnname_seq"
+(eg: t1_empno_seq)
+
+
+                                        JOIN
+                                        ----
+
+It is used to retrieve data from multiple related tables.
+They should have common column.
+
+display empno, ename, salary, dname of all employees.
+
+SELECT  E.empno, E.ename, E.salary, D.dname, E.deptno
+FROM    employees E, departments D
+WHERE   E.deptno = D.deptno;
+
+condition given in WHERE clause is known as "Join Condition".
+
+There are 2 types.
+1) equi-join
+    if the join condition is given based on equality
+2) non-equi join
+    if the join condition is given on any other operator except equality
+
+
+inner join
+    display all matching rows
+outer join
+    display all matching and non-matching rows.
+
+    LEFT OUTER JOIN         : all matching rows AND missing rows from LEFT table
+    RIGHT OUTER JOIN        : all matching rows AND missing rows from RIGHT table
+    FULL OUTER JOIN         : all matching rows AND missing rows from both the tables.
+
+SELECT  E.empno, E.ename, E.salary, D.dname, E.deptno
+FROM    employees E
+JOIN    departments D
+ON   E.deptno = D.deptno;
+
+SELECT  E.empno, E.ename, E.salary, D.dname, D.deptno
+FROM    employees E
+LEFT OUTER JOIN    departments D
+ON   E.deptno = D.deptno;
+
+
+SELECT  E.empno, E.ename, E.salary, D.dname, D.deptno
+FROM    employees E
+RIGHT OUTER JOIN    departments D
+ON   E.deptno = D.deptno;
+
+SELECT  E.empno, E.ename, E.salary, D.dname, D.deptno
+FROM    employees E
+FULL  OUTER JOIN    departments D
+ON   E.deptno = D.deptno;
+
+
+Rule:
+-----
+Minimum number of join conditions = no. of tables to be joined - 1
+
+SELECT  empno, ename, dname, country
+FROM employees E
+JOIN departments D 
+ON E.deptno = D.deptno
+JOIN countries C
+ON D.loc = C.loc;
+
+Note:
+-----
+if the join condition is invalid, or completely eliminated the result is known as
+CARTESIAN PRODUCT.
+
+
+SELECT  E.empno, E.ename, E.salary, D.dname, E.deptno
+FROM    employees E, departments D;
+
+
+                                    SET OPERATORS
+                                    -------------
+UNION
+INTERSECT
+EXCEPT
+
+set operators are used to get the results out of two queries.
+
+SELECT DISTINCT deptno FROM employees
+UNION
+SELECT deptno FROM departments;
+
+
+SELECT DISTINCT deptno FROM employees
+INTERSECT
+SELECT deptno FROM departments;
+
+SELECT DISTINCT deptno FROM employees
+EXCEPT
+SELECT deptno FROM departments;
+
+SELECT deptno FROM departments
+EXCEPT
+SELECT DISTINCT deptno FROM employees;
+
+===============================================================================
+
+
+
+
+
+
 
 
 

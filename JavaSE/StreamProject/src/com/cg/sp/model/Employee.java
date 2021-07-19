@@ -1,5 +1,7 @@
 package com.cg.sp.model;
 
+import java.util.Objects;
+
 public class Employee {
 	private int empNumber;
 	private String empName;
@@ -14,6 +16,24 @@ public class Employee {
 		this.empNumber = empNumber;
 		this.empName = empName;
 		this.salary = salary;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(empName, empNumber, salary);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return Objects.equals(empName, other.empName) && empNumber == other.empNumber
+				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
 	}
 
 	@Override
