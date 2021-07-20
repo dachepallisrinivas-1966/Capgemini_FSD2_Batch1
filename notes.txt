@@ -2381,10 +2381,11 @@ Statement interface
     execute(sql)       : mainly for batch update
     executeUpdate(sql) : INSERT, UPDATE, DELETE
 PreparedStatement interface
+    it support parameterized queries.
     executeQuery()  : SELECT 
     execute()       : mainly for batch update, DDL commands
     executeUpdate() : INSERT, UPDATE, DELETE
-Callable interface
+CallableStatement  interface
     is mainly to work with stored procedures, stored functions in the database.
 ResultSet interface
     contain the data returned by the database as a result of executing SELECT statement.
@@ -2398,6 +2399,11 @@ Assignment:
 2. deleting an employee when empno is given
 
 
+
+
+================================================================================================================
+Day-6 [20-july-2021]
+
 						Gradle
 						------
 Gradle is a build tool.
@@ -2406,6 +2412,68 @@ Maven Repository etc.,
 
 Java Project
 Gradle Project	->	build.gradle -> groovy script -> list all the dependencies
+
+
+
+Assignment:
+1. difference between Statement and PreparedStatement?
+2. updating salary of an employee
+3. deleting an employee when empno is given
+4. BookStoreManagement - JDBC Implementation
+
+
+
+
+						Design Patterns
+						---------------
+1) Creational Design Pattern
+	SingleTon, Prototype, Factory, Abstract Factory, Builder
+2) Structural Design Pattern
+	how to glue different pieces of a system together
+	Adapter, Proxy
+3) Behavioural Deisgn Pattern
+	when we change the object or class, the behaviour of application is changed
+
+	Observer, Iterator
+
+
+SingleTonDesign Pattern
+-------------------------
+you might want only one object of the class. this object should be used through out the project.
+eg: Creating Database Connection only once.
+
+Factory Design Pattern
+------------------------
+The Application will create object for a class, it does not allow the developer to create objects.
+
+
+Concurrency 
+------------
+1) Runnable interface
+2) Thread class
+
+Thread Pool:
+------------
+
+
+
+
+
+
+						JDK1.8 features
+1. DateTimeAPI
+2. StreamAPI
+3. Lambdas
+4. Optional
+5. StringJoiner
+6. new methods in String class
+7. new features in interfaces
+	a) default methods
+	b) static methods
+
+
+
+
 
 
 
